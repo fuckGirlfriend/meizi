@@ -88,12 +88,13 @@ function fsExistsSync(path) {
   return true;
 }
 
-let index = 1
+let index = process.env.MEIZI || 1
 let event = setInterval(()=> {
   console.log(' ')
   console.log(` > 执行第${index}次任务`.rainbow)
   index++
-  if (index >= 1000) {
+  // 理论上是无上限的
+  if (index >= 10000000000) {
     clearInterval(event)
   }
   func.get({

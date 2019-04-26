@@ -6,9 +6,13 @@ function get(arg) {
   for (let i in b) {
     d+= `${i}=${b[i]}`
   }
-  request.get(`${arg.url || floor}${d}`,(err,req,body)=> {
+  request({
+    url: `${arg.url || floor}${d}`,
+    json: true
+  },(err,req,body)=> {
     if (!err && req.statusCode == 200) {
-      arg.success(JSON.parse(body))
+      // arg.success(JSON.parse(body))
+      arg.success(body)
     }
   })
 }
