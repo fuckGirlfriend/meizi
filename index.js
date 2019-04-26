@@ -7,7 +7,7 @@ require('colors')
 if (!fsExistsSync('meizi')) fs.mkdirSync('meizi',err=> console.error(err))
 
 function meizi(data) {
-  if (data.msg == `话题不存在` || data.post.title == `/* 话题已删除 */`) return
+  if (data.msg == `话题不存在` || data.msg == `话题所属分类不存在` || data.post.title == `/* 话题已删除 */`  || !data.title) return
 
   if (data.post.user.gender == 1 && data.post.category.categoryID == 3) {
     let id = data.post.postID,
